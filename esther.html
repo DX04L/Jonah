@@ -3,27 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>以斯帖記系列：聽天不由命 X 我為此而生</title>
+    <title>以斯帖記系列 | Bible Study</title>
     
     <style>
         :root {
-            /* 提取自圖片的色調 */
-            --esther-gold: #d4af37;
-            --esther-pink: #f8c2d1;
-            --esther-dark-pink: #e91e63;
-            --esther-navy: #1a237e;
-            --glass-bg: rgba(255, 255, 255, 0.95);
-            --text-main: #4a4a4a;
+            /* LV 經典色系應用於以斯帖記 */
+            --lv-dark-brown: #3d2b1f;
+            --lv-gold: #c5a059;
+            --lv-beige: #f4ece1;
+            --glass-white: rgba(255, 255, 255, 0.95);
         }
 
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            /* 全域字體設定為 Arial */
+            font-family: 'Arial', 'Helvetica', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
             margin: 0;
             padding: 0;
-            color: var(--text-main);
-            background-color: var(--esther-pink); /* 備用底色 */
+            color: var(--lv-dark-brown);
+            background-color: var(--lv-beige);
             background-image: url('Esther_bg.jpg'); 
             background-repeat: no-repeat;
             background-position: center center;
@@ -33,25 +32,26 @@
         }
 
         .overlay {
-            background: rgba(255, 255, 255, 0.2); /* 較淺的遮罩，配合明亮底圖 */
+            background: rgba(61, 43, 31, 0.4); /* 深色遮罩提升質感 */
             min-height: 100vh;
-            padding: 40px 20px;
+            padding: 60px 20px;
         }
 
         .header {
             text-align: center;
             margin-bottom: 50px;
-            text-shadow: 1px 1px 10px rgba(255,255,255,0.8);
         }
 
         .header h1 { 
+            font-family: 'Arial', sans-serif;
             font-size: clamp(2.4rem, 6vw, 3.6rem); 
             margin: 0; 
-            color: var(--esther-dark-pink); 
+            color: var(--lv-gold); 
             line-height: 1.1;
-            letter-spacing: 4px;
-            font-weight: 800;
+            letter-spacing: 8px;
+            font-weight: 700;
             text-transform: uppercase;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.5);
         }
 
         .header p { 
@@ -59,7 +59,7 @@
             margin-top: 15px;
             font-weight: 600;
             letter-spacing: 2px;
-            color: var(--esther-navy);
+            color: var(--lv-beige);
         }
 
         .container {
@@ -68,14 +68,13 @@
         }
 
         .sermon-card {
-            background: var(--glass-bg);
+            background: var(--glass-white);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
+            border-radius: 4px;
+            padding: 35px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.15);
-            border-left: 10px solid var(--esther-gold);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border-left: 6px solid var(--lv-gold);
             transition: all 0.3s ease;
             opacity: 0;
             transform: translateY(20px);
@@ -86,15 +85,11 @@
             transform: translateY(0);
         }
 
-        .sermon-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(233, 30, 99, 0.25);
-        }
-
         .chapter-num {
-            color: var(--esther-dark-pink);
-            font-weight: 800;
-            font-size: 0.8rem;
+            font-family: 'Arial', sans-serif;
+            color: var(--lv-gold);
+            font-weight: 700;
+            font-size: 0.85rem;
             text-transform: uppercase;
             display: block;
             margin-bottom: 8px;
@@ -104,62 +99,104 @@
         .sermon-title {
             font-size: 1.6rem;
             margin: 0 0 12px 0;
-            color: var(--esther-navy);
+            color: var(--lv-dark-brown);
             font-weight: 700;
         }
 
         .description {
-            color: #666;
+            color: #5d4037;
             font-size: 1.1rem;
             margin-bottom: 25px;
-            border-bottom: 1px dashed var(--esther-pink);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
             padding-bottom: 15px;
         }
 
-        /* 按鈕區域 */
         .button-group {
             display: flex;
-            gap: 12px;
+            gap: 15px;
             flex-wrap: wrap;
         }
 
         .play-button {
+            font-family: 'Arial', sans-serif;
             flex: 1;
             min-width: 140px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background-color: var(--esther-navy);
-            color: white;
+            background-color: var(--lv-dark-brown);
+            color: var(--lv-gold);
             text-decoration: none;
             padding: 14px 20px;
-            border-radius: 12px;
+            border-radius: 2px;
+            border: 1px solid var(--lv-gold);
             font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
         }
 
         .play-button:hover {
-            background-color: var(--esther-dark-pink);
-            transform: scale(1.03);
+            background-color: var(--lv-gold);
+            color: var(--lv-dark-brown);
         }
 
-        .play-button::before {
-            content: '▶';
-            margin-right: 8px;
-            font-size: 0.8rem;
+        /* 懸浮回首頁按鈕 */
+        .home-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--lv-dark-brown);
+            color: var(--lv-gold);
+            border: 2px solid var(--lv-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            font-family: 'Arial', sans-serif;
+            font-size: 24px;
+        }
+
+        .home-btn:hover {
+            transform: scale(1.1) rotate(-10deg);
+            background-color: var(--lv-gold);
+            color: var(--lv-dark-brown);
+        }
+
+        .home-btn span {
+            font-size: 10px;
+            position: absolute;
+            bottom: 8px;
+            font-weight: bold;
         }
 
         footer {
             text-align: center;
-            color: var(--esther-navy);
+            color: var(--lv-beige);
             padding: 60px 20px;
-            font-size: 0.95rem;
-            font-weight: 600;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 600px) {
+            .home-btn { bottom: 20px; right: 20px; width: 50px; height: 50px; }
+            .home-btn span { font-size: 8px; }
         }
     </style>
 </head>
 <body>
+
+<a href="index.html" class="home-btn" title="Back to Main">
+    🏠
+    <span>HOME</span>
+</a>
 
 <div class="overlay">
     <header class="header">
@@ -171,7 +208,7 @@
         </div>
 
     <footer>
-        <p>📖『以斯帖記』信息彙整 | 榮耀歸給上帝</p>
+        <p>&copy; 2026 BIBLE STUDY PORTAL | ESTHER SERIES</p>
     </footer>
 </div>
 
@@ -182,8 +219,8 @@
             title: "1. 以斯帖記 1 [介紹]",
             desc: "聽天不由命｜神你在哪裡？",
             links: [
-                { label: "收聽信息 (上)", url: "https://tinyurl.com/CLCSeniors-Sermon250227" },
-                { label: "收聽信息 (下)", url: "https://tinyurl.com/CLCSeniors-Sermon250327" }
+                { label: "PART A", url: "https://tinyurl.com/CLCSeniors-Sermon250227" },
+                { label: "PART B", url: "https://tinyurl.com/CLCSeniors-Sermon250327" }
             ]
         },
         {
@@ -191,7 +228,7 @@
             title: "2. 以斯帖記 2 [1~2章]",
             desc: "兩個荒宴｜荒唐世代跟隨神",
             links: [
-                { label: "收聽信息", url: "https://tinyurl.com/CLCSeniors-Sermon250424" }
+                { label: "LISTEN NOW", url: "https://tinyurl.com/CLCSeniors-Sermon250424" }
             ]
         },
         {
@@ -199,7 +236,7 @@
             title: "3. 以斯帖記 3 [3~4章]",
             desc: "黑色陰謀｜生命的關鍵抉擇",
             links: [
-                { label: "收聽信息", url: "https://tinyurl.com/CLCSeniors-Sermon250626" }
+                { label: "LISTEN NOW", url: "https://tinyurl.com/CLCSeniors-Sermon250626" }
             ]
         },
         {
@@ -207,7 +244,7 @@
             title: "4. 以斯帖記 4 [5~7章]",
             desc: "雙宴密謀｜神就在這裡！",
             links: [
-                { label: "收聽信息", url: "https://tinyurl.com/CLCSeniors-Sermon250731" }
+                { label: "LISTEN NOW", url: "https://tinyurl.com/CLCSeniors-Sermon250731" }
             ]
         },
         {
@@ -215,7 +252,7 @@
             title: "5. 以斯帖記 5 [8章]",
             desc: "扭轉乾坤｜人生的逆轉時刻",
             links: [
-                { label: "收聽信息", url: "https://tinyurl.com/CLCSeniors-Sermon250918" }
+                { label: "LISTEN NOW", url: "https://tinyurl.com/CLCSeniors-Sermon250918" }
             ]
         },
         {
@@ -223,8 +260,8 @@
             title: "6. 以斯帖記 6 [9~10章]",
             desc: "兩個華宴｜穿越世代的命定",
             links: [
-                { label: "收聽信息 (上)", url: "https://tinyurl.com/CLCSeniors-Sermon251016" },
-                { label: "收聽信息 (下)", url: "https://tinyurl.com/CLCSeniors-Sermon251030" }
+                { label: "PART A", url: "https://tinyurl.com/CLCSeniors-Sermon251016" },
+                { label: "PART B", url: "https://tinyurl.com/CLCSeniors-Sermon251030" }
             ]
         },
         {
@@ -232,7 +269,7 @@
             title: "7. 以斯帖記 7 [總結]",
             desc: "我為此而生｜Jesus",
             links: [
-                { label: "收聽信息", url: "https://tinyurl.com/CLCSeniors-Sermon251113" }
+                { label: "LISTEN NOW", url: "https://tinyurl.com/CLCSeniors-Sermon251113" }
             ]
         }
     ];
