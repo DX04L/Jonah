@@ -7,22 +7,24 @@
     
     <style>
         :root {
-            /* LV 經典色系應用於以斯帖記 */
-            --lv-dark-brown: #3d2b1f;
-            --lv-gold: #c5a059;
-            --lv-beige: #f4ece1;
-            --glass-white: rgba(255, 255, 255, 0.95);
+            /* 恢復原本以斯帖記的色調 */
+            --esther-gold: #d4af37;
+            --esther-pink: #f8c2d1;
+            --esther-dark-pink: #e91e63;
+            --esther-navy: #1a237e;
+            --glass-bg: rgba(255, 255, 255, 0.95);
+            --text-main: #4a4a4a;
         }
 
         html { scroll-behavior: smooth; }
 
         body {
-            /* 全域字體設定為 Arial */
+            /* 英文字體更新為 Arial */
             font-family: 'Arial', 'Helvetica', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
             margin: 0;
             padding: 0;
-            color: var(--lv-dark-brown);
-            background-color: var(--lv-beige);
+            color: var(--text-main);
+            background-color: var(--esther-pink); 
             background-image: url('Esther_bg.jpg'); 
             background-repeat: no-repeat;
             background-position: center center;
@@ -32,26 +34,26 @@
         }
 
         .overlay {
-            background: rgba(61, 43, 31, 0.4); /* 深色遮罩提升質感 */
+            background: rgba(255, 255, 255, 0.2); 
             min-height: 100vh;
-            padding: 60px 20px;
+            padding: 40px 20px;
         }
 
         .header {
             text-align: center;
             margin-bottom: 50px;
+            text-shadow: 1px 1px 10px rgba(255,255,255,0.8);
         }
 
         .header h1 { 
             font-family: 'Arial', sans-serif;
             font-size: clamp(2.4rem, 6vw, 3.6rem); 
             margin: 0; 
-            color: var(--lv-gold); 
+            color: var(--esther-dark-pink); 
             line-height: 1.1;
-            letter-spacing: 8px;
-            font-weight: 700;
+            letter-spacing: 4px;
+            font-weight: 800;
             text-transform: uppercase;
-            text-shadow: 2px 2px 15px rgba(0,0,0,0.5);
         }
 
         .header p { 
@@ -59,7 +61,7 @@
             margin-top: 15px;
             font-weight: 600;
             letter-spacing: 2px;
-            color: var(--lv-beige);
+            color: var(--esther-navy);
         }
 
         .container {
@@ -68,13 +70,13 @@
         }
 
         .sermon-card {
-            background: var(--glass-white);
+            background: var(--glass-bg);
             backdrop-filter: blur(10px);
-            border-radius: 4px;
-            padding: 35px;
+            border-radius: 20px;
+            padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            border-left: 6px solid var(--lv-gold);
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.15);
+            border-left: 10px solid var(--esther-gold);
             transition: all 0.3s ease;
             opacity: 0;
             transform: translateY(20px);
@@ -87,9 +89,9 @@
 
         .chapter-num {
             font-family: 'Arial', sans-serif;
-            color: var(--lv-gold);
-            font-weight: 700;
-            font-size: 0.85rem;
+            color: var(--esther-dark-pink);
+            font-weight: 800;
+            font-size: 0.8rem;
             text-transform: uppercase;
             display: block;
             margin-bottom: 8px;
@@ -99,21 +101,21 @@
         .sermon-title {
             font-size: 1.6rem;
             margin: 0 0 12px 0;
-            color: var(--lv-dark-brown);
+            color: var(--esther-navy);
             font-weight: 700;
         }
 
         .description {
-            color: #5d4037;
+            color: #666;
             font-size: 1.1rem;
             margin-bottom: 25px;
-            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+            border-bottom: 1px dashed var(--esther-pink);
             padding-bottom: 15px;
         }
 
         .button-group {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
@@ -124,33 +126,32 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background-color: var(--lv-dark-brown);
-            color: var(--lv-gold);
+            background-color: var(--esther-navy);
+            color: white;
             text-decoration: none;
             padding: 14px 20px;
-            border-radius: 2px;
-            border: 1px solid var(--lv-gold);
+            border-radius: 12px;
             font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            font-size: 1rem;
             transition: 0.3s;
+            text-transform: uppercase;
         }
 
         .play-button:hover {
-            background-color: var(--lv-gold);
-            color: var(--lv-dark-brown);
+            background-color: var(--esther-dark-pink);
+            transform: scale(1.03);
         }
 
-        /* 懸浮回首頁按鈕 */
+        /* 懸浮回首頁按鈕 - 採用以斯帖色系 */
         .home-btn {
             position: fixed;
             bottom: 30px;
             right: 30px;
             width: 60px;
             height: 60px;
-            background-color: var(--lv-dark-brown);
-            color: var(--lv-gold);
-            border: 2px solid var(--lv-gold);
+            background-color: var(--esther-navy);
+            color: white;
+            border: 2px solid var(--esther-gold);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -160,13 +161,11 @@
             z-index: 1000;
             transition: all 0.3s ease;
             font-family: 'Arial', sans-serif;
-            font-size: 24px;
         }
 
         .home-btn:hover {
-            transform: scale(1.1) rotate(-10deg);
-            background-color: var(--lv-gold);
-            color: var(--lv-dark-brown);
+            transform: scale(1.1);
+            background-color: var(--esther-dark-pink);
         }
 
         .home-btn span {
@@ -178,11 +177,11 @@
 
         footer {
             text-align: center;
-            color: var(--lv-beige);
+            color: var(--esther-navy);
             padding: 60px 20px;
             font-family: 'Arial', sans-serif;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
+            font-size: 0.95rem;
+            font-weight: 600;
         }
 
         @media (max-width: 600px) {
@@ -208,7 +207,7 @@
         </div>
 
     <footer>
-        <p>&copy; 2026 BIBLE STUDY PORTAL | ESTHER SERIES</p>
+        <p>📖『以斯帖記』信息彙整 | 榮耀歸給上帝</p>
     </footer>
 </div>
 
