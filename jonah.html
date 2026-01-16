@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>約拿書系列：愛與給人機會的神</title>
+    <title>約拿書系列 | Bible Study</title>
     
     <style>
         :root {
@@ -16,11 +16,12 @@
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            /* 字體更新為 Arial */
+            font-family: 'Arial', 'Helvetica', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
             margin: 0;
             padding: 0;
             color: var(--text-main);
-            background-color: #1a3a4a; /* 備用底色 */
+            background-color: #1a3a4a; 
             background-image: url('Jonah_bg.jpg'); 
             background-repeat: no-repeat;
             background-position: center center;
@@ -43,6 +44,7 @@
         }
 
         .header h1 { 
+            font-family: 'Arial', sans-serif;
             font-size: clamp(2.4rem, 6vw, 3.6rem); 
             margin: 0; 
             color: var(--gold-accent); 
@@ -84,12 +86,8 @@
             transform: translateY(0);
         }
 
-        .sermon-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
         .chapter-num {
+            font-family: 'Arial', sans-serif;
             color: var(--ocean-blue);
             font-weight: 800;
             font-size: 0.75rem;
@@ -113,6 +111,7 @@
         }
 
         .play-button {
+            font-family: 'Arial', sans-serif;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -126,6 +125,7 @@
             transition: all 0.3s ease;
             width: 100%;
             box-sizing: border-box;
+            text-transform: uppercase;
         }
 
         .play-button:hover {
@@ -134,22 +134,56 @@
             transform: scale(1.02);
         }
 
-        .play-button::before {
-            content: '▶';
-            margin-right: 10px;
-            font-size: 0.8rem;
+        /* 懸浮回首頁按鈕 - 統一樣式但顏色可微調 */
+        .home-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--ocean-blue);
+            color: var(--gold-accent);
+            border: 2px solid var(--gold-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .home-btn:hover {
+            transform: scale(1.1);
+            background-color: var(--gold-accent);
+            color: white;
+        }
+
+        .home-btn span {
+            font-size: 10px;
+            position: absolute;
+            bottom: 8px;
+            font-weight: bold;
         }
 
         footer {
             text-align: center;
             color: white;
             padding: 50px 20px;
+            font-family: 'Arial', sans-serif;
             font-size: 0.9rem;
             opacity: 0.8;
         }
     </style>
 </head>
 <body>
+
+<a href="index.html" class="home-btn" title="Back to Main">
+    🏠
+    <span>HOME</span>
+</a>
 
 <div class="overlay">
     <header class="header">
@@ -161,32 +195,32 @@
         </div>
 
     <footer>
-        <p>&copy; 2026 信息分享 | 榮耀歸給上帝</p>
+        <p>&copy; 2026 BIBLE STUDY | JONAH SERIES</p>
     </footer>
 </div>
 
 <script>
     const sermons = [
         {
-            chapter: "Chapter 01",
+            chapter: "SERIES 01",
             title: "1. 三十六計，走為下策（拿一）",
             desc: "違背神旨意的結果就是遇見風暴，也帶給身邊的人風暴。",
             url: "https://tinyurl.com/CLCSeniors-Sermon221012"
         },
         {
-            chapter: "Chapter 02",
+            chapter: "SERIES 02",
             title: "2. 跑的了先知，躲不了神（拿二）",
             desc: "神有絕對主權，救恩出於耶和華！",
             url: "https://tinyurl.com/CLCSeniors-Sermon221109"
         },
         {
-            chapter: "Chapter 03",
+            chapter: "SERIES 03",
             title: "3. 呼召不改，本性要移（拿三）",
             desc: "行動帶來恢復，悔改就帶來恩典。",
             url: "https://tinyurl.com/CLCSeniors-Sermon230628"
         },
         {
-            chapter: "Chapter 04",
+            chapter: "SERIES 04",
             title: "4. 坐山觀審判，唯有神慈愛（拿四）",
             desc: "上帝「愛」一切他所造的並給人悔改的「機會」，要藉著福音傳給萬民。",
             url: "https://tinyurl.com/CLCSeniors-Sermon230726"
@@ -200,7 +234,7 @@
                 <span class="chapter-num">${s.chapter}</span>
                 <h2 class="sermon-title">${s.title}</h2>
                 <p class="description">${s.desc}</p>
-                <a href="${s.url}" class="play-button" target="_blank">收聽信息</a>
+                <a href="${s.url}" class="play-button" target="_blank">Listen Now</a>
             </div>
         `).join('');
 
