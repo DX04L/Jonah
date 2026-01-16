@@ -17,7 +17,7 @@
         html { scroll-behavior: smooth; }
 
         body {
-            /* Applied Arial for English and fallback for Chinese */
+            /* 英文字體使用 Arial */
             font-family: 'Arial', 'Helvetica', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
             margin: 0;
             padding: 0;
@@ -97,6 +97,7 @@
             padding: 30px;
             text-align: center;
             background: white;
+            flex-grow: 1;
         }
 
         .card-content h2 {
@@ -145,10 +146,11 @@
             letter-spacing: 1px;
         }
 
-        /* Background Images */
+        /* 背景圖片連結 */
         .bg-jonah { background-image: url('Jonah_bg.jpg'); }
         .bg-esther { background-image: url('Esther_bg.jpg'); }
-        .bg-galatians { background-image: url('Galatians_bg.jpg'); } /* 新增加拉太書背景圖 */
+        .bg-galatians { background-image: url('Galatians_bg.jpg'); }
+        .bg-john { background-image: url('John-Believe_bg.jpg'); }
 
         @media (max-width: 600px) {
             .header { padding: 50px 20px; }
@@ -187,6 +189,15 @@
             <div class="card-content">
                 <h2>GALATIANS</h2>
                 <p>GOSPEL original✝ 正港的福音</p>
+                <div class="btn">Explore Series</div>
+            </div>
+        </a>
+
+        <a href="john-believe.html" class="study-card">
+            <div class="card-image bg-john"></div>
+            <div class="card-content">
+                <h2>JOHN</h2>
+                <p>⑦Believe｜Signs X I AM</p>
                 <div class="btn">Explore Series</div>
             </div>
         </a>
