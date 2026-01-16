@@ -20,7 +20,11 @@
             margin: 0;
             padding: 0;
             color: var(--text-main);
-            background: url('1.jpg') no-repeat center center fixed;
+            background-color: #1a3a4a; /* 備用底色 */
+            background-image: url('Jonah_bg.jpg'); 
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
             background-size: cover;
             line-height: 1.6;
         }
@@ -105,14 +109,35 @@
         .description {
             color: #555;
             font-size: 1.05rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
-        audio {
+        .play-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--ocean-blue);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
             width: 100%;
-            height: 40px;
-            border-radius: 5px;
-            outline: none;
+            box-sizing: border-box;
+        }
+
+        .play-button:hover {
+            background-color: #2c5d75;
+            box-shadow: 0 5px 15px rgba(26, 58, 74, 0.4);
+            transform: scale(1.02);
+        }
+
+        .play-button::before {
+            content: '▶';
+            margin-right: 10px;
+            font-size: 0.8rem;
         }
 
         footer {
@@ -132,7 +157,8 @@
         <p>約拿書系列：愛與給人機會的神</p>
     </header>
 
-    <div class="container" id="sermon-container"></div>
+    <div class="container" id="sermon-container">
+        </div>
 
     <footer>
         <p>&copy; 2026 信息分享 | 榮耀歸給上帝</p>
@@ -140,52 +166,43 @@
 </div>
 
 <script>
-    // Updated to match your exact file names
     const sermons = [
         {
             chapter: "Chapter 01",
-            title: "1. 三十六計，走為下策",
+            title: "1. 三十六計，走為下策（拿一）",
             desc: "違背神旨意的結果就是遇見風暴，也帶給身邊的人風暴。",
-            fileName: "Jonah (1).mp3"
+            url: "https://tinyurl.com/CLCSeniors-Sermon221012"
         },
         {
             chapter: "Chapter 02",
-            title: "2. 跑的了先知，躲不了神",
+            title: "2. 跑的了先知，躲不了神（拿二）",
             desc: "神有絕對主權，救恩出於耶和華！",
-            fileName: "Jonah (2).mp3"
+            url: "https://tinyurl.com/CLCSeniors-Sermon221109"
         },
         {
             chapter: "Chapter 03",
-            title: "3. 呼召不改，本性要移",
+            title: "3. 呼召不改，本性要移（拿三）",
             desc: "行動帶來恢復，悔改就帶來恩典。",
-            fileName: "Jonah (3).mp3"
+            url: "https://tinyurl.com/CLCSeniors-Sermon230628"
         },
         {
             chapter: "Chapter 04",
-            title: "4. 坐山觀審判，唯有神慈愛",
-            desc: "上帝「愛」一切他所造的並給人悔改的「機會」。",
-            fileName: "Jonah (4).mp3"
+            title: "4. 坐山觀審判，唯有神慈愛（拿四）",
+            desc: "上帝「愛」一切他所造的並給人悔改的「機會」，要藉著福音傳給萬民。",
+            url: "https://tinyurl.com/CLCSeniors-Sermon230726"
         }
     ];
 
     function renderSermons() {
         const container = document.getElementById('sermon-container');
-        container.innerHTML = sermons.map((s, index) => {
-            // encodeURIComponent handles the spaces and parentheses in file names
-            const safeFileName = encodeURIComponent(s.fileName);
-            
-            return `
-                <div class="sermon-card" style="transition-delay: ${index * 0.1}s">
-                    <span class="chapter-num">${s.chapter}</span>
-                    <h2 class="sermon-title">${s.title}</h2>
-                    <p class="description">${s.desc}</p>
-                    <audio controls preload="none">
-                        <source src="${safeFileName}" type="audio/mpeg">
-                        您的瀏覽器不支援播放器。
-                    </audio>
-                </div>
-            `;
-        }).join('');
+        container.innerHTML = sermons.map((s, index) => `
+            <div class="sermon-card" style="transition-delay: ${index * 0.1}s">
+                <span class="chapter-num">${s.chapter}</span>
+                <h2 class="sermon-title">${s.title}</h2>
+                <p class="description">${s.desc}</p>
+                <a href="${s.url}" class="play-button" target="_blank">收聽信息</a>
+            </div>
+        `).join('');
 
         setTimeout(() => {
             document.querySelectorAll('.sermon-card').forEach(card => card.classList.add('visible'));
@@ -196,6 +213,4 @@
 </script>
 
 </body>
-
 </html>
-
