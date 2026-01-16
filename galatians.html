@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加拉太書系列 | Bible Study</title>
+    
+    <style>
+        :root {
+            /* 提取自加拉太書圖片的配色：黑、白、亮黃與鮮粉 */
+            --gospel-dark: #1a1a1a;
+            --gospel-yellow: #ffeb3b;
+            --gospel-pink: #ff1a75;
+            --gospel-blue: #00bcd4;
+            --glass-white: rgba(255, 255, 255, 0.96);
+            --text-main: #333333;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            /* 英文字體使用 Arial */
+            font-family: 'Arial', 'Helvetica', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-main);
+            background-color: var(--gospel-dark);
+            background-image: url('Galatians_bg.jpg'); 
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+            line-height: 1.6;
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.6); /* 深色遮罩以突顯文字 */
+            min-height: 100vh;
+            padding: 60px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 { 
+            font-family: 'Arial', sans-serif;
+            font-size: clamp(2.2rem, 6vw, 3.8rem); 
+            margin: 0; 
+            color: #ffffff; 
+            line-height: 1.1;
+            letter-spacing: 4px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .header h1 span {
+            color: var(--gospel-yellow);
+        }
+
+        .header p { 
+            font-size: clamp(1rem, 2.5vw, 1.4rem); 
+            margin-top: 15px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .sermon-card {
+            background: var(--glass-white);
+            backdrop-filter: blur(10px);
+            border-radius: 4px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            border-left: 8px solid var(--gospel-blue); /* 側邊條使用藍色 */
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .sermon-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .chapter-num {
+            font-family: 'Arial', sans-serif;
+            color: var(--gospel-pink);
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+
+        .sermon-title {
+            font-size: 1.55rem;
+            margin: 0 0 10px 0;
+            color: #111;
+            font-weight: 700;
+        }
+
+        .description {
+            color: #555;
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .play-button {
+            font-family: 'Arial', sans-serif;
+            flex: 1;
+            min-width: 140px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--gospel-dark);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            border: 1px solid transparent;
+        }
+
+        .play-button:hover {
+            background-color: transparent;
+            color: var(--gospel-dark);
+            border: 1px solid var(--gospel-dark);
+            transform: translateY(-2px);
+        }
+
+        /* 懸浮回首頁按鈕 */
+        .home-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #ffffff;
+            color: var(--gospel-dark);
+            border: 2px solid var(--gospel-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .home-btn:hover {
+            transform: scale(1.1);
+            background-color: var(--gospel-yellow);
+        }
+
+        .home-btn span {
+            font-size: 10px;
+            position: absolute;
+            bottom: 8px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            color: #ffffff;
+            padding: 60px 20px;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 600px) {
+            .home-btn { bottom: 20px; right: 20px; width: 50px; height: 50px; }
+            .home-btn span { font-size: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="home-btn" title="Back to Main">
+    🏠
+    <span>HOME</span>
+</a>
+
+<div class="overlay">
+    <header class="header">
+        <h1>GOSPEL <span>original</span>✝</h1>
+        <p>正港的福音：加拉太書系列</p>
+    </header>
+
+    <div class="container" id="sermon-container">
+        </div>
+
+    <footer>
+        <p>&copy; 2026 BIBLE STUDY PORTAL | GALATIANS SERIES</p>
+    </footer>
+</div>
+
+<script>
+    const sermons = [
+        {
+            chapter: "一. 信耶穌",
+            title: "1-1 只有一個福音 [加1:1-10]",
+            desc: "福音只有一個，任何改動都會使其失效。",
+            links: [{ label: "LISTEN NOW", url: "https://tinyurl.com/CLCSeniors-Sermon230927" }]
+        },
+        {
+            chapter: "一. 信耶穌",
+            title: "1-2 基督啟示的福音 [加1:11-2:14]",
+            desc: "福音並非出於人，而是直接由基督的啟示而來。",
+            links: [
+                { label: "PART A", url: "https://tinyurl.com/CLCSeniors-Sermon231018" },
+                { label: "PART B", url: "https://tinyurl.com/CLCSeniors-Sermon231108" }
+            ]
+        },
+        {
+            chapter: "二. 新生命",
+            title: "2-1 因信稱義的新生命 [加2:15-21]",
+            desc: "不是靠律法，而是靠信基督獲得新的生命地位。",
+            links: [{ label: "LISTEN NOW", url: "https://tinyurl.com/CLCSeniors-Sermon240124v1" }]
+        },
+        {
+            chapter: "二. 新生命",
+            title: "2-2 倚靠聖靈的新生命 [加3:1-18]",
+            desc: "新生命是靠聖靈入門，也應靠聖靈成全。",
+            links: [{ label: "LISTEN NOW", url: "https://tinyurl.com/CLCSeniors-Sermon240320v1" }]
+        },
+        {
+            chapter: "二. 新生命",
+            title: "2-3 做神兒女的新生命 [加3:19-4:11]",
+            desc: "我們在基督裡不再是奴僕，而是擁有基業的兒女。",
+            links: [{ label: "LISTEN NOW", url: "https://tinyurl.com/CLCSeniors-Sermon240425" }]
+        },
+        {
+            chapter: "二. 新生命",
+            title: "2-4 基督成形的新生命 [加4:12-4:31]",
+            desc: "直到基督成形在你們心裡，這是新生命的目標。",
+            links: [{ label: "LISTEN NOW", url: "https://tinyurl.com/CLCSeniors-Sermon240523" }]
+        },
+        {
+            chapter: "三. 真自由",
+            title: "3-1 活出主愛的真自由 [加5:1-15]",
+            desc: "自由不是放縱情慾，而是為了彼此服事。",
+            links: [{ label: "LISTEN NOW", url: "https://tinyurl.com/CLCSeniors-Sermon240926" }]
+        },
+        {
+            chapter: "三. 真自由",
+            title: "3-2 聖靈引導的真自由 [加5:16-26]",
+            desc: "順著聖靈而行，結出生命的美好果子。",
+            links: [{ label: "LISTEN NOW", url: "https://tinyurl.com/CLCSeniors-Sermon241024" }]
+        },
+        {
+            chapter: "三. 真自由",
+            title: "3-3 彼此擔當的真自由 [加6:1-10]",
+            desc: "重擔要彼此擔當，這就是完全了基督的律法。",
+            links: [{ label: "LISTEN NOW", url: "https://tinyurl.com/CLCSeniors-Sermon241128" }]
+        },
+        {
+            chapter: "四. 十字架",
+            title: "4 只有十字架 [加6:11-18]",
+            desc: "斷不以別的誇口，只誇我們主耶穌基督的十字架。",
+            links: [{ label: "LISTEN NOW", url: "https://tinyurl.com/CLCSeniors-Sermon250123" }]
+        }
+    ];
+
+    function renderSermons() {
+        const container = document.getElementById('sermon-container');
+        container.innerHTML = sermons.map((s, index) => `
+            <div class="sermon-card" style="transition-delay: ${index * 0.1}s">
+                <span class="chapter-num">${s.chapter}</span>
+                <h2 class="sermon-title">${s.title}</h2>
+                <p class="description">${s.desc}</p>
+                <div class="button-group">
+                    ${s.links.map(link => `
+                        <a href="${link.url}" class="play-button" target="_blank">${link.label}</a>
+                    `).join('')}
+                </div>
+            </div>
+        `).join('');
+
+        setTimeout(() => {
+            document.querySelectorAll('.sermon-card').forEach(card => card.classList.add('visible'));
+        }, 100);
+    }
+
+    window.onload = renderSermons;
+</script>
+
+</body>
+</html>
