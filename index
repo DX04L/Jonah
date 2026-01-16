@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Study 信息彙整</title>
+    <style>
+        :root {
+            --gold: #d4af37;
+            --navy: #1a237e;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--navy), #0d47a1);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin: 0;
+            letter-spacing: 4px;
+            font-weight: 800;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: -40px auto 60px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .study-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .study-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.2);
+        }
+
+        .card-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .card-image::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.2);
+            transition: background 0.3s;
+        }
+
+        .study-card:hover .card-image::after {
+            background: rgba(0,0,0,0);
+        }
+
+        .card-content {
+            padding: 25px;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .card-content h2 {
+            margin: 0 0 10px 0;
+            color: var(--navy);
+            font-size: 1.8rem;
+        }
+
+        .card-content p {
+            color: #666;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .btn {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 25px;
+            background: var(--gold);
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            margin-top: auto;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Background Specifics */
+        .bg-jonah { background-image: url('Jonah_bg.jpg'); }
+        .bg-esther { background-image: url('Esther_bg.jpg'); }
+
+        @media (max-width: 600px) {
+            .header { padding: 40px 20px; }
+            .container { margin-top: -20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>Bible Study</h1>
+        <p>查經系列信息彙整</p>
+    </header>
+
+    <div class="container">
+        <a href="jonah.html" class="study-card">
+            <div class="card-image bg-jonah"></div>
+            <div class="card-content">
+                <h2>JONAH</h2>
+                <p>愛與給人機會的神</p>
+                <div class="btn">進入系列</div>
+            </div>
+        </a>
+
+        <a href="esther.html" class="study-card">
+            <div class="card-image bg-esther"></div>
+            <div class="card-content">
+                <h2>ESTHER</h2>
+                <p>聽天不由命 X 我為此而生</p>
+                <div class="btn">進入系列</div>
+            </div>
+        </a>
+    </div>
+
+    <footer>
+        &copy; 2026 Bible Study Portal | 榮耀歸給上帝
+    </footer>
+
+</body>
+</html>
