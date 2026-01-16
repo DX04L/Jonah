@@ -17,7 +17,6 @@
         html { scroll-behavior: smooth; }
 
         body {
-            /* 英文字體使用 Arial */
             font-family: 'Arial', 'Helvetica', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
             margin: 0;
             padding: 0;
@@ -86,9 +85,17 @@
         }
 
         .card-image {
-            height: 250px;
-            background-size: cover;
+            /* 關鍵修改：鎖定 16:9 比例 */
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            height: auto;
+            
+            /* 確保圖片完整顯示不裁切 */
+            background-size: contain; 
+            background-repeat: no-repeat;
             background-position: center;
+            background-color: var(--lv-dark-brown); /* 圖片外圍補深色底 */
+            
             position: relative;
             border-bottom: 2px solid var(--lv-gold);
         }
