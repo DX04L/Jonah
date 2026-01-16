@@ -40,20 +40,21 @@
             font-family: 'Arial', sans-serif;
             font-size: clamp(2.5rem, 8vw, 4rem);
             margin: 0;
-            letter-spacing: 12px; 
+            letter-spacing: 0; 
             font-weight: 700;
             text-transform: uppercase;
         }
 
         .header p {
             font-family: 'Arial', sans-serif;
-            /* 修改點：將字體大小提升 300% (原本 1.1rem -> 3.3rem) */
-            font-size: 3.3rem; 
-            opacity: 0.9;
-            margin-top: 25px;
+            /* 修改點：調整為原本大小的 70% (1.1rem * 0.7 = 0.77rem) */
+            font-size: 0.77rem; 
+            opacity: 0.8;
+            margin-top: 10px;
             color: var(--lv-beige);
-            letter-spacing: 4px;
-            font-weight: 600;
+            letter-spacing: 2px;
+            font-weight: 400;
+            text-transform: uppercase;
         }
 
         .container {
@@ -159,7 +160,6 @@
 
         @media (max-width: 600px) {
             .header { padding: 50px 20px; }
-            .header p { font-size: 1.8rem; } /* 手機版自動縮小避免破版 */
             .container { margin-top: -30px; gap: 25px; }
         }
     </style>
