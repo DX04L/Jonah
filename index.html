@@ -3,20 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bible Study 信息彙整</title>
+    <title>Bible Study | 經典信息彙整</title>
     <style>
         :root {
-            --gold: #d4af37;
-            --navy: #1a237e;
+            /* LV 經典色系 */
+            --lv-dark-brown: #3d2b1f; /* 深巧克力褐 */
+            --lv-light-brown: #6b4f3b; /* 淺褐 */
+            --lv-gold: #c5a059;       /* 經典金 */
+            --lv-beige: #f4ece1;      /* 米杏色底 */
             --white: #ffffff;
         }
 
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            /* Applied Arial for English and fallback for Chinese */
+            font-family: 'Arial', 'Helvetica', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: var(--lv-beige);
+            color: var(--lv-dark-brown);
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -24,119 +30,128 @@
 
         .header {
             text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, var(--navy), #0d47a1);
-            color: white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--lv-dark-brown), var(--lv-light-brown));
+            color: var(--lv-gold);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            border-bottom: 3px solid var(--lv-gold);
         }
 
         .header h1 {
+            font-family: 'Arial', sans-serif;
             font-size: clamp(2.5rem, 8vw, 4rem);
             margin: 0;
-            letter-spacing: 4px;
-            font-weight: 800;
+            letter-spacing: 12px; 
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         .header p {
-            font-size: 1.2rem;
-            opacity: 0.8;
-            margin-top: 10px;
+            font-family: 'Arial', sans-serif;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 15px;
+            color: var(--lv-beige);
+            letter-spacing: 2px;
         }
 
         .container {
-            max-width: 1000px;
-            margin: -40px auto 60px;
+            max-width: 1100px;
+            margin: -50px auto 60px;
             padding: 0 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
             width: 100%;
             box-sizing: border-box;
         }
 
         .study-card {
-            background: white;
-            border-radius: 20px;
+            background: var(--white);
+            border-radius: 4px; 
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(61, 43, 31, 0.15);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             text-decoration: none;
             color: inherit;
             display: flex;
             flex-direction: column;
-            position: relative;
+            border: 1px solid rgba(197, 160, 89, 0.2);
         }
 
         .study-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 45px rgba(0,0,0,0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(61, 43, 31, 0.25);
+            border-color: var(--lv-gold);
         }
 
         .card-image {
-            height: 220px;
+            height: 250px;
             background-size: cover;
             background-position: center;
             position: relative;
-        }
-
-        .card-image::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.2);
-            transition: background 0.3s;
-        }
-
-        .study-card:hover .card-image::after {
-            background: rgba(0,0,0,0);
+            border-bottom: 2px solid var(--lv-gold);
         }
 
         .card-content {
-            padding: 25px;
+            padding: 30px;
             text-align: center;
-            flex-grow: 1;
+            background: white;
         }
 
         .card-content h2 {
-            margin: 0 0 10px 0;
-            color: var(--navy);
+            font-family: 'Arial', sans-serif;
+            margin: 0 0 12px 0;
+            color: var(--lv-dark-brown);
             font-size: 1.8rem;
+            letter-spacing: 3px;
+            font-weight: 600;
         }
 
         .card-content p {
-            color: #666;
+            color: var(--lv-light-brown);
             font-size: 1rem;
             margin: 0;
         }
 
         .btn {
-            margin-top: 20px;
+            font-family: 'Arial', sans-serif;
+            margin-top: 25px;
             display: inline-block;
-            padding: 10px 25px;
-            background: var(--gold);
-            color: white;
-            border-radius: 50px;
+            padding: 12px 40px;
+            background: var(--lv-dark-brown);
+            color: var(--lv-gold);
+            border: 1px solid var(--lv-gold);
             font-weight: bold;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .study-card:hover .btn {
+            background: var(--lv-gold);
+            color: var(--lv-dark-brown);
         }
 
         footer {
+            font-family: 'Arial', sans-serif;
             text-align: center;
-            padding: 40px;
+            padding: 50px;
             margin-top: auto;
-            color: #888;
-            font-size: 0.9rem;
+            background: var(--lv-dark-brown);
+            color: var(--lv-gold);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
         }
 
-        /* Background Specifics */
+        /* Background Images */
         .bg-jonah { background-image: url('Jonah_bg.jpg'); }
         .bg-esther { background-image: url('Esther_bg.jpg'); }
 
         @media (max-width: 600px) {
-            .header { padding: 40px 20px; }
-            .container { margin-top: -20px; }
+            .header { padding: 50px 20px; }
+            .container { margin-top: -30px; gap: 25px; }
         }
     </style>
 </head>
@@ -144,7 +159,7 @@
 
     <header class="header">
         <h1>Bible Study</h1>
-        <p>查經系列信息彙整</p>
+        <p>FOR SUCH A TIME AS THIS</p>
     </header>
 
     <div class="container">
@@ -153,7 +168,7 @@
             <div class="card-content">
                 <h2>JONAH</h2>
                 <p>愛與給人機會的神</p>
-                <div class="btn">進入系列</div>
+                <div class="btn">Explore Series</div>
             </div>
         </a>
 
@@ -162,13 +177,13 @@
             <div class="card-content">
                 <h2>ESTHER</h2>
                 <p>聽天不由命 X 我為此而生</p>
-                <div class="btn">進入系列</div>
+                <div class="btn">Explore Series</div>
             </div>
         </a>
     </div>
 
     <footer>
-        &copy; 2026 Bible Study Portal | 榮耀歸給上帝
+        &copy; 2026 BIBLE STUDY PORTAL | SINCE 2022
     </footer>
 
 </body>
